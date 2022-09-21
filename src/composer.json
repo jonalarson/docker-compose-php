@@ -1,0 +1,9 @@
+{
+    "name": "phpunit/phpunit",
+    "autoload": {
+        "psr-4": {
+            "Phpunit\\Phpunit\\": "src/"
+        }
+    },
+    "require": {}
+}

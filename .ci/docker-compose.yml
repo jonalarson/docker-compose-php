@@ -1,0 +1,27 @@
+version: "3"
+
+services:
+
+  composer:
+    image: composer/composer
+    platform: "linux/amd64" 
+    container_name: composer
+    command: install
+    volumes: 
+      - ../src:/app
+
+  webserver:
+    build:
+      context: .
+      dockerfile: Developer.Dockerfile
+    platform: "linux/amd64" 
+    container_name: webserver
+    restart: unless-stopped
+    ports:
+      - 80:80
+    working_dir: /var/www/html
+    volumes:
+      - type: bind
+        source: ../src
+        target: /var/www/html
+
